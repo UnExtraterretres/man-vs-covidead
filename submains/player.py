@@ -1,5 +1,4 @@
-import pygame
-from .vaccine import Vaccine
+from .vaccine import Vaccine, pygame
 from .tools.animation import AnimateSprite
 
 
@@ -24,7 +23,7 @@ class Player(AnimateSprite):
         self.health = self.max_health
 
         # velocity
-        self.velocity = 5
+        self.velocity = 4
 
         # vaccines
         self.vaccines = pygame.sprite.Group()

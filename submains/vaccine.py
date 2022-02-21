@@ -1,4 +1,5 @@
 import pygame
+from random import randint
 
 
 class Vaccine(pygame.sprite.Sprite):
@@ -13,7 +14,7 @@ class Vaccine(pygame.sprite.Sprite):
         self.image = pygame.image.load("assets/entities/vaccine.png")
         self.rect = self.image.get_rect()
         self.rect.x = self.player.rect.x + 10
-        self.rect.y = self.player.rect.y + 10
+        self.rect.y = self.player.rect.y + 10 + randint(-2, 2)
 
         # velocity
         self.velocity = 5

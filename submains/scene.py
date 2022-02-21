@@ -1,5 +1,8 @@
+import pygame.sprite
+
 from .player import *
 from .mob import *
+from .items import *
 
 
 class Menu:
@@ -49,6 +52,9 @@ class Level:
         # the player
         self.player = Player(game=self.game)
 
+        # the  items
+        self.items = pygame.sprite.Group()
+
         # the mobs
         self.mobs = pygame.sprite.Group()
 
@@ -71,6 +77,19 @@ class Level:
             if self.current_day % 7 == 0:
                 for i in range(randint(1, self.current_day // 7)):
                     self.mobs.add(Kamikaze.__call__(self.game))
+
+            # create some items
+            if randint(1, 10) == 1:
+                # 10% for Surgical Mask
+                self.items.add(SurgicalMask.__call__(self.game))
+
+            if randint(1, 100) == 1:
+                # 1% for HydroAlcoholicGel
+                self.items.add(HydroAlcoholicGel.__call__(self.game))
+
+        # Update Items
+        for item in self.items:
+            item.update()
 
         # Update Vaccines
         for vac in self.player.vaccines:
@@ -115,6 +134,10 @@ class Level:
         # draw the player
         self.game.screen.blit(self.player.image, self.player.rect)
         self.player.update_health_bar()
+
+        # draw the items
+        for item in self.items:
+            self.game.screen.blit(item.image, item.rect)
 
         # draw the vaccines
         for vac in self.player.vaccines:
