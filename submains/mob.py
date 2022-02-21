@@ -69,7 +69,7 @@ class CommunistCovidead(Mob):
 class Kamikaze(Mob):
 
     def __init__(self, game):
-        super().__init__(game, "kamikaze", 300, 21, 3, 0.5)
+        super().__init__(game, "kamikaze", 300, 21, 3, 3)
 
     def forward(self):
         super().forward()
